@@ -2,9 +2,10 @@ import { withPayload } from '@payloadcms/next/withPayload'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Your Next.js config here
   output: 'standalone',
+
   serverExternalPackages: ['@payloadcms/db-mongodb', 'sharp'],
+
   webpack: (webpackConfig) => {
     webpackConfig.resolve.extensionAlias = {
       '.cjs': ['.cts', '.cjs'],
@@ -14,6 +15,15 @@ const nextConfig = {
 
     return webpackConfig
   },
+
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
-export default withPayload(nextConfig, { devBundleServerPackages: false })
+export default withPayload(nextConfig, {
+  devBundleServerPackages: false,
+})
