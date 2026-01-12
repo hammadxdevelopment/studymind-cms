@@ -2,15 +2,10 @@ import config from '@payload-config'
 import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
-import { UploadHandlersProvider } from '@payloadcms/ui'
 import React from 'react'
 import './custom.scss'
 
-import { S3ClientUploadHandler } from '@payloadcms/storage-s3/client'
-
-const importMap = {
-  '@payloadcms/storage-s3/client#S3ClientUploadHandler': S3ClientUploadHandler,
-}
+import { importMap } from './admin/importMap'
 
 type Args = {
   children: React.ReactNode
@@ -27,7 +22,7 @@ const serverFunction: ServerFunctionClient = async function (args) {
 
 const Layout = ({ children }: Args) => (
   <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
-    <UploadHandlersProvider>{children}</UploadHandlersProvider>
+    {children}
   </RootLayout>
 )
 
