@@ -3,15 +3,9 @@ import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
+
+import { importMap } from './admin/importMap'
 import './custom.scss'
-
-// 1. Direct Import (Bypassing the buggy map file)
-import { S3ClientUploadHandler } from '@payloadcms/storage-s3/client'
-
-// 2. Manually define the map here
-const importMap = {
-  '@payloadcms/storage-s3/client#S3ClientUploadHandler': S3ClientUploadHandler,
-}
 
 type Args = {
   children: React.ReactNode
