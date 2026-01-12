@@ -3,9 +3,13 @@ import '@payloadcms/next/css'
 import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
-
-import { importMap } from './admin/importMap'
 import './custom.scss'
+
+import { S3ClientUploadHandler } from '@payloadcms/storage-s3/client'
+
+const importMap = {
+  '@payloadcms/storage-s3/client#S3ClientUploadHandler': S3ClientUploadHandler,
+}
 
 type Args = {
   children: React.ReactNode
