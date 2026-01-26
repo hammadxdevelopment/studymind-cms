@@ -36,9 +36,10 @@ export const Users: CollectionConfig = {
       ],
       required: true,
       defaultValue: 'editor',
-      access: {
-        update: isAdminField,
-      },
+      // 👇 COMMENT THIS OUT TEMPORARILY
+      // access: {
+      //   update: isAdminField,
+      // },
     },
   ],
 }
