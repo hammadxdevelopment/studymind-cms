@@ -20,6 +20,13 @@ import { SpecificWayWeWorkBlock } from '../blocks/SpecificWayWeWorkBlock'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  admin: {
+    useAsTitle: 'title',
+    preview: (doc) => {
+      const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://studymind-education.vercel.app'
+      return `${baseUrl}/${doc.slug === 'home' ? '' : doc.slug}`
+    },
+  },
   versions: {
     drafts: true,
   },
