@@ -20,8 +20,19 @@ import { SpecificWayWeWorkBlock } from '../blocks/SpecificWayWeWorkBlock'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  versions: {
+    drafts: true,
+  },
   access: {
-    read: () => true,
+    read: ({ req: { user } }) => {
+      if (user) return true
+
+      return {
+        _status: {
+          equals: 'published',
+        },
+      }
+    },
   },
   fields: [
     {
